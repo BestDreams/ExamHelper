@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.svse.dream.test.ClassActivity">
+    tools:context="com.svse.dream.test.LibImprotActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,25 +25,13 @@
         android:divider="@null">
 
     </ListView>
-    <LinearLayout
-        android:orientation="vertical"
+    <Button
+        android:id="@+id/btn_classOk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:text="提示:稍后可在侧滑菜单中重新选择"/>
-        <Button
-            android:id="@+id/btn_classOk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
-            android:textColor="#FFF"
-            android:onClick="onClick"
-            android:text="下一步"/>
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:background="#F6927B"
+        android:textColor="#FFF"
+        android:onClick="onClick"
+        android:text="下一步"/>
 </LinearLayout>

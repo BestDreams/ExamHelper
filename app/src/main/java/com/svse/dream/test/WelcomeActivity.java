@@ -1,6 +1,5 @@
 package com.svse.dream.test;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.svse.dream.utils.GlobelVar;
-import com.svse.dream.utils.MyUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,12 +36,12 @@ public class WelcomeActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(WelcomeActivity.this,ClassActivity.class));
-                /*if (!isFirstIn){
-                    startActivity(new Intent(WelcomeActivity.this,ClassActivity.class));
+                startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
+                if (!isFirstIn){
+                    startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
                 }else{
                     startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-                }*/
+                }
                 finish();
             }
         },2000);

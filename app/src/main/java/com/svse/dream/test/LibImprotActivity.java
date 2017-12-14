@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.svse.dream.apdater.OSListViewAdapter;
 import com.svse.dream.dao.DataDaoImpl;
@@ -15,7 +16,7 @@ import com.svse.dream.utils.GlobelVar;
 import java.util.List;
 import java.util.Set;
 
-public class ClassActivity extends AppCompatActivity implements View.OnClickListener {
+public class LibImprotActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences.Editor editor;
     private ListView OSlist;
@@ -25,7 +26,7 @@ public class ClassActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class);
+        setContentView(R.layout.activity_libimport);
         getSupportActionBar().hide();
         this.getWindow().setStatusBarColor(Color.parseColor("#F6927B"));
         init();
@@ -48,7 +49,7 @@ public class ClassActivity extends AppCompatActivity implements View.OnClickList
                 editor.putBoolean("isFirstIn",true);
                 editor.putStringSet("myOSlist",myOSlist);
                 editor.commit();
-                startActivity(new Intent(ClassActivity.this,MainActivity.class));
+                startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
                 finish();
                 break;
         }
