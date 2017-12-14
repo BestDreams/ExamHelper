@@ -14,14 +14,15 @@
         android:paddingBottom="15dp"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:background="@color/colorPrimary"
+        android:background="#F6927B"
         android:text="选择你的题库"/>
 
     <ListView
         android:id="@+id/OSlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:divider="@null">
 
     </ListView>
     <LinearLayout

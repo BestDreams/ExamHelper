@@ -2,6 +2,7 @@ package com.svse.dream.test;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,6 +27,7 @@ public class ClassActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class);
         getSupportActionBar().hide();
+        this.getWindow().setStatusBarColor(Color.parseColor("#F6927B"));
         init();
     }
 

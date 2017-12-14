@@ -38,11 +38,12 @@ public class WelcomeActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!isFirstIn){
+                startActivity(new Intent(WelcomeActivity.this,ClassActivity.class));
+                /*if (!isFirstIn){
                     startActivity(new Intent(WelcomeActivity.this,ClassActivity.class));
                 }else{
                     startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-                }
+                }*/
                 finish();
             }
         },2000);
