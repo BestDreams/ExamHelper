@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.svse.dream.fragment.MainFragment;
+import com.svse.dream.utils.DBHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.framelayout,fragments[i]);
         }
         fragmentTransaction.commit();
-
     }
 
+    @Override
+    protected void onDestroy() {
+        DBHelper.closeDB();
+        super.onDestroy();
+    }
 }

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Administrator\\AndroidStudioProjects\\ExamHelper\\slidemenu\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\AndroidStudioProject\\ExamHelper\\slidemenu\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 1130
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\AndroidStudioProjects\\ExamHelper\\slidemenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidStudioProject\\ExamHelper\\slidemenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,

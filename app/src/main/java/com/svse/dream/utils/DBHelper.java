@@ -14,4 +14,10 @@ public class DBHelper {
         return db;
     }
 
+    public static void closeDB(){
+        if (db!=null){
+            db.close();
+        }
+    }
+
 }

@@ -31,17 +31,17 @@ public class WelcomeActivity extends AppCompatActivity {
         if (!isFirstIn){
             loadDB();
         }
-        //3秒后，如果是第一次进入跳转到题库选择界面，否则跳转到主界面
+        //如果是第一次则跳转到题库选择界面，否则跳转到主界面
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
-                if (!isFirstIn){
+                /*if (!isFirstIn){
                     startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
                 }else{
                     startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-                }
+                }*/
                 finish();
             }
         },2000);
