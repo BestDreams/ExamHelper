@@ -12,6 +12,8 @@ import com.svse.dream.bean.OSInfo;
 import com.svse.dream.bean.Question;
 import com.svse.dream.dao.DataDaoImpl;
 import com.svse.dream.test.R;
+import com.svse.dream.test.StudyActivity;
+import com.svse.dream.utils.GlobelVar;
 
 import java.util.List;
 
@@ -49,7 +51,7 @@ public class OSInfoAdapter extends BaseAdapter {
         ViewHolder viewHolder=null;
         if (view==null){
             viewHolder=new ViewHolder();
-            view=View.inflate(context, R.layout.listview_osinfo_item,null);
+            view=View.inflate(context, R.layout.main_listview_osinfo_item,null);
             viewHolder.index= (TextView) view.findViewById(R.id.osinfo_index);
             viewHolder.osName= (TextView) view.findViewById(R.id.osinfo_osName);
             viewHolder.osCount= (TextView) view.findViewById(R.id.osinfo_count);
@@ -66,10 +68,12 @@ public class OSInfoAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*List<Question> studyQuestionsByOsName = dataDao.getStudyQuestionsByOsName(osInfo.getOsName());
-                context.startActivity(new Intent(context, ExamActivity.class));
-                Activity activity= (Activity) context;
-                activity.finish();*/
+                GlobelVar.studyQuestionList = dataDao.getStudyQuestionsByOsName(osInfo.getOsName());
+                GlobelVar.isSubmitStudyAnswer=new Boolean[GlobelVar.studyQuestionList.size()];
+                for (int j = 0; j < GlobelVar.isSubmitStudyAnswer.length; j++) {
+                    GlobelVar.isSubmitStudyAnswer[j]=false;
+                }
+                context.startActivity(new Intent(context,StudyActivity.class));
             }
         });
 

@@ -52,7 +52,7 @@ public class OSListViewAdapter extends BaseAdapter {
         ViewHolder viewHolder=null;
         if (view==null){
             viewHolder=new ViewHolder();
-            view=View.inflate(context, R.layout.listview_oslist_item,null);
+            view=View.inflate(context, R.layout.libimport_listview_oslist_item,null);
             viewHolder.osName= (CheckBox) view.findViewById(R.id.cb_select);
             view.setTag(viewHolder);
         }else {

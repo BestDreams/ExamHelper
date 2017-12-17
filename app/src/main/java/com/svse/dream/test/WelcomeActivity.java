@@ -36,15 +36,14 @@ public class WelcomeActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
-                /*if (!isFirstIn){
+                if (!isFirstIn){
                     startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
                 }else{
                     startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-                }*/
+                }
                 finish();
             }
-        },2000);
+        },100);
     }
 
     /**

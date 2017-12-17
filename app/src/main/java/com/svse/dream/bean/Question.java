@@ -175,5 +175,25 @@ public class Question implements Serializable {
         this.question_select3 = question_select3;
     }
 
-
+    @Override
+    public String toString() {
+        return "Question{" +
+                "question_ID=" + question_ID +
+                ", osName='" + osName + '\'' +
+                ", question_content='" + question_content + '\'' +
+                ", question_answerA='" + question_answerA + '\'' +
+                ", question_answerB='" + question_answerB + '\'' +
+                ", question_answerC='" + question_answerC + '\'' +
+                ", question_answerD='" + question_answerD + '\'' +
+                ", question_explain='" + question_explain + '\'' +
+                ", question_answer1=" + question_answer1 +
+                ", question_answer2=" + question_answer2 +
+                ", question_answer3=" + question_answer3 +
+                ", question_answer4=" + question_answer4 +
+                ", question_select1=" + question_select1 +
+                ", question_select2=" + question_select2 +
+                ", question_select3=" + question_select3 +
+                ", question_select4=" + question_select4 +
+                '}';
+    }
 }

@@ -3,17 +3,20 @@ package com.svse.dream.test;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.svse.dream.fragment.MainFragment;
 import com.svse.dream.utils.DBHelper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static SlidingMenu slidingMenu;
+    private LinearLayout slideMylib;
     public void initSlideMenu(){
         Display display = getWindowManager().getDefaultDisplay();
         slidingMenu=new SlidingMenu(this);
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         slidingMenu.setFadeDegree(0.3f);
         slidingMenu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT);
         slidingMenu.setMenu(R.layout.slidemenu_main);
+
+        //实例化菜单View
+        slideMylib = (LinearLayout) findViewById(R.id.slide_mylib);
+        slideMylib.setOnClickListener(this);
     }
 
     private FragmentManager fragmentManager;
@@ -57,5 +65,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         DBHelper.closeDB();
         super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.slide_mylib:
+                startActivity(new Intent(this,LibImprotActivity.class));
+                finish();
+                break;
+        }
     }
 }
