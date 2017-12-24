@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.svse.dream.apdater.OSListViewAdapter;
 import com.svse.dream.dao.DataDaoImpl;
-import com.svse.dream.utils.GlobelVar;
+import com.svse.dream.utils.Globel;
 
 import java.util.List;
 import java.util.Set;
@@ -34,7 +33,7 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
 
     public void init() {
         dataDao=new DataDaoImpl();
-        editor= GlobelVar.getSharedPreferencesEditor(this);
+        editor= Globel.getSharedPreferencesEditor(this);
         OSlist = (ListView) findViewById(R.id.OSlist);
         List<String> allTableName = dataDao.getAllTableName();
         osListViewAdapter = new OSListViewAdapter(this, allTableName);

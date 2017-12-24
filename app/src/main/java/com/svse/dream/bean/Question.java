@@ -8,22 +8,22 @@ import java.io.Serializable;
  */
 
 public class Question implements Serializable {
-    public int question_ID;
-    private String osName;
-    public String question_content;
-    public String question_answerA;
-    public String question_answerB;
-    public String question_answerC;
-    public String question_answerD;
-    public String question_explain;
-    public int question_answer1;
-    public int question_answer2;
-    public int question_answer3;
-    public int question_answer4;
-    public int question_select1;
-    public int question_select2;
-    public int question_select3;
-    public int question_select4;
+    protected int question_ID;
+    protected String osName;
+    protected String question_content;
+    protected String question_answerA;
+    protected String question_answerB;
+    protected String question_answerC;
+    protected String question_answerD;
+    protected String question_explain;
+    protected int question_answer1;
+    protected int question_answer2;
+    protected int question_answer3;
+    protected int question_answer4;
+    protected int question_select1;
+    protected int question_select2;
+    protected int question_select3;
+    protected int question_select4;
 
     public Question() {
     }

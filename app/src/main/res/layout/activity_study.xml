@@ -11,13 +11,62 @@
         android:layout_height="50dp"
         android:background="#F6927B"
         >
+        <RelativeLayout
+            android:id="@+id/study_remove_curr"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="13sp"
+                android:text="移除"/>
+        </RelativeLayout>
         <TextView
+            android:id="@+id/study_title"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFF"
             android:textSize="16sp"
             android:text="练习模式"/>
+        <RelativeLayout
+            android:id="@+id/study_remove_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="13sp"
+                android:text="清空"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/study_submit_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="13sp"
+                android:text="交卷"/>
+        </RelativeLayout>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +74,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
         <LinearLayout
+            android:id="@+id/study_layout_true"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="0dp"
@@ -43,6 +93,7 @@
                 android:text="50"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/study_layout_false"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="0dp"
@@ -81,6 +132,7 @@
                 android:text="1/50"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/study_favorites"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="0dp"
@@ -91,7 +143,6 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/study_icon_favorite"/>
             <TextView
-                android:id="@+id/study_favorites"
                 android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

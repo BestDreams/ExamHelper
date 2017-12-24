@@ -1,6 +1,6 @@
 package com.svse.dream.apdater;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -9,11 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.svse.dream.bean.OSInfo;
-import com.svse.dream.bean.Question;
-import com.svse.dream.dao.DataDaoImpl;
 import com.svse.dream.test.R;
 import com.svse.dream.test.StudyActivity;
-import com.svse.dream.utils.GlobelVar;
+import com.svse.dream.utils.Globel;
 
 import java.util.List;
 
@@ -23,10 +21,8 @@ import java.util.List;
 public class OSInfoAdapter extends BaseAdapter {
     private Context context;
     private List<OSInfo> osInfoList;
-    private DataDaoImpl dataDao;
 
     public OSInfoAdapter(Context context, List<OSInfo> osInfoList) {
-        dataDao=new DataDaoImpl();
         this.context = context;
         this.osInfoList = osInfoList;
     }
@@ -68,17 +64,18 @@ public class OSInfoAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobelVar.studyQuestionList = dataDao.getStudyQuestionsByOsName(osInfo.getOsName());
-                GlobelVar.isSubmitStudyAnswer=new Boolean[GlobelVar.studyQuestionList.size()];
-                for (int j = 0; j < GlobelVar.isSubmitStudyAnswer.length; j++) {
-                    GlobelVar.isSubmitStudyAnswer[j]=false;
-                }
-                context.startActivity(new Intent(context,StudyActivity.class));
+                Globel.setQuestionList(Globel.QUESTION_TYPE_ALL,osInfo.getOsName(),Globel.LOADING_LIB_STUDY, context, new Globel.GlobelInterface() {
+                    @Override
+                    public void questionLoadFinsh() {
+                        context.startActivity(new Intent(context,StudyActivity.class));
+                    }
+                });
             }
         });
 
         return view;
     }
+
 
     class ViewHolder{
         TextView index;

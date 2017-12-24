@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.svse.dream.utils.GlobelVar;
+import com.svse.dream.utils.Globel;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,7 +26,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
     boolean isFirstIn;
     public void initData(){
-        isFirstIn = GlobelVar.getSharedPreferences(this).getBoolean("isFirstIn", false);
+        isFirstIn = Globel.getSharedPreferences(this).getBoolean("isFirstIn", false);
         //如果是第一次进入，则加载数据库
         if (!isFirstIn){
             loadDB();
@@ -50,13 +50,13 @@ public class WelcomeActivity extends AppCompatActivity {
      * 加载数据库文件到指定目录
      */
     public void loadDB(){
-        File folder=new File(GlobelVar.DB_PATH);
+        File folder=new File(Globel.DB_PATH);
         if (!folder.exists()){
             folder.mkdir();
         }
         try {
             InputStream is=getApplicationContext().getResources().openRawResource(R.raw.question);
-            OutputStream os=new FileOutputStream(GlobelVar.DB_PATH+GlobelVar.DB_NAME);
+            OutputStream os=new FileOutputStream(Globel.DB_PATH+ Globel.DB_NAME);
             byte[] buffer=new byte[1024];
             int length;
             while ((length=is.read(buffer))>0){

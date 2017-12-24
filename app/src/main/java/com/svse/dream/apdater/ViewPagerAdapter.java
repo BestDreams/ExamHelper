@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * Created by Hello on 2017/6/10.
  */
-public class viewPagerAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private List<View> viewList;
 
-    public viewPagerAdapter(Context context, List<View> viewList) {
+    public ViewPagerAdapter(Context context, List<View> viewList) {
         this.context = context;
         this.viewList = viewList;
     }
