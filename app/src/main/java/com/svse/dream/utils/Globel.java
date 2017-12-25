@@ -4,23 +4,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
 
 import com.svse.dream.bean.OSInfo;
 import com.svse.dream.bean.Question;
 import com.svse.dream.bean.QuestionMyLib;
 import com.svse.dream.dao.DataDaoImpl;
-import com.svse.dream.test.MainActivity;
-import com.svse.dream.test.R;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -55,6 +50,7 @@ public class Globel {
     public static final String LOADING_LIB_ERRORBOOK="正在加载错题本...";
     public static final String LOADING_LIB_FAVORITE="正在加载收藏夹...";
     public static final String LOADING_LIB_EXAM="正在生成考试试卷...";
+    public static final String EXAM_GRADE_MAX="EXAM_GRADE_MAX";
 
 
     /**
@@ -94,7 +90,7 @@ public class Globel {
     //试卷总题量
     public static int exam_total_num=0;
     //平均分值
-    public static float exam_avg_score=0;
+    public static double exam_avg_score=0;
     //开始日期
     public static String exam_start_date="01/01";
     //开始时间
@@ -104,9 +100,9 @@ public class Globel {
     //结束时间
     public static String exam_end_time="00:00";
     //考试成绩
-    public static float exam_grade=0;
+    public static double exam_grade=0;
     //正确率
-    public static float exam_correct_procent=0;
+    public static double exam_correct_procent=0;
 
     /**
      * 错误本变量
@@ -229,10 +225,22 @@ public class Globel {
         }
     }
 
-    public static String dateFormatUtil(String format){
+    /**
+     * 时间格式化
+     * @param format
+     * @return
+     */
+    public static String dateFormatUtil(String format,Date date){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat(format);
-        return simpleDateFormat.format(new Date());
+        return simpleDateFormat.format(date);
     };
+
+    /**
+     *
+     */
+    public static String msToTime(long ms){
+        return new SimpleDateFormat("mm:ss").format(ms).toString();
+    }
 
     /**
      * 强制弹出输入法
@@ -245,6 +253,20 @@ public class Globel {
                 inputManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
             }
         },100);
+    }
+
+    /**
+     * 保留N位小数
+     * @param a 被除数
+     * @param b 除数
+     * @param num 保留小数位
+     * @return 返回结果
+     */
+    public static double doubleToDoubleBit(double a,double b,int num){
+        double result=a/b;
+        BigDecimal bigDecimal=new BigDecimal(result);
+        double doubleValue = bigDecimal.setScale(num, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return doubleValue;
     }
 
     /**

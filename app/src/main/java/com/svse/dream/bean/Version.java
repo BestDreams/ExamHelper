@@ -5,17 +5,17 @@ package com.svse.dream.bean;
  * 创建更新记录实体
  */
 
-public class HistoryLog {
+public class Version {
     private int id;
     private String version;
     private String date;
     private String content;
     private String bug;
 
-    public HistoryLog() {
+    public Version() {
     }
 
-    public HistoryLog(int id, String version, String date, String content, String bug) {
+    public Version(int id, String version, String date, String content, String bug) {
         this.id = id;
         this.version = version;
         this.date = date;

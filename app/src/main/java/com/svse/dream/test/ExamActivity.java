@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,10 +23,12 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.svse.dream.apdater.QuestionDialogAdapter;
 import com.svse.dream.apdater.ViewPagerAdapter;
+import com.svse.dream.bean.MyGrade;
 import com.svse.dream.bean.Question;
 import com.svse.dream.utils.Globel;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +59,7 @@ public class ExamActivity extends AppCompatActivity {
     private GridView question_dialog_gridview;
     private int[] question_num_arr;
     private Dialog dialog;
+    private long statr_ms=0;
 
     public void initView(){
         //初始化控件
@@ -86,11 +90,8 @@ public class ExamActivity extends AppCompatActivity {
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("my",Globel.examTrue+"");
-                                Log.i("my",Globel.examFalse+"");
-                                Globel.exam_grade=Globel.exam_avg_score*Globel.examTrue;
-                                Globel.exam_correct_procent=((int)(((double) (Globel.examTrue*10000))/(double) (Globel.exam_total_num)))/100;
-                                Log.i("my",Globel.exam_correct_procent+"");
+                                savaGrade();
+                                finish();
                             }
                         })
                         .setNegativeButton("取消",null)
@@ -103,6 +104,7 @@ public class ExamActivity extends AppCompatActivity {
         for (int i = 0; i < Globel.examQuestionList.size(); i++) {
             initIndexView(i);
         }
+        statr_ms= System.currentTimeMillis();
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new ViewPagerAdapter(this,viewList));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -135,6 +137,32 @@ public class ExamActivity extends AppCompatActivity {
         studyCount.setText((Globel.examIndex+1)+"/"+ Globel.examQuestionList.size());
     }
 
+    /**
+     * 保存考试成绩
+     */
+    public void savaGrade(){
+        String osNames="";
+        for(Map.Entry<String,Integer> entry:Globel.examAttrsMap.entrySet()){
+            osNames+=entry.getKey()+"_"+entry.getValue()+"\t";
+        }
+        String[] dateArray = Globel.dateFormatUtil("MM/dd HH:mm",new Date()).split(" ");
+        Globel.exam_end_date=dateArray[0];
+        Globel.exam_end_time=dateArray[1];
+        Globel.exam_grade=Globel.exam_avg_score*Globel.examTrue;
+        Globel.exam_correct_procent=Globel.doubleToDoubleBit(Globel.examTrue,Globel.exam_total_num,4)*100;
+        Integer submitNo=Globel.exam_total_num-Globel.examTrue-Globel.examFalse;
+        Integer submitYes=Globel.examTrue+Globel.examFalse;
+        String startTime=Globel.exam_start_date+" "+Globel.exam_start_time;
+        String endTime=Globel.exam_end_date+" "+Globel.exam_end_time;
+        statr_ms=System.currentTimeMillis()-statr_ms;
+        MyGrade myGrade=new MyGrade(null,osNames,(int) Globel.exam_grade,submitNo,submitYes,Globel.examFalse,Globel.examTrue,startTime,endTime,Globel.msToTime(statr_ms),Globel.exam_correct_procent+"%",Globel.exam_total_num);
+        MainActivity.insertGradeToMyGrade(myGrade);
+        int maxGrade = Globel.getSharedPreferences(this).getInt(Globel.EXAM_GRADE_MAX, 0);
+        if (Globel.exam_grade>maxGrade){
+            Globel.getSharedPreferencesEditor(this).putInt(Globel.EXAM_GRADE_MAX, (int) Globel.exam_grade).commit();
+        }
+        startActivity(new Intent(ExamActivity.this,ExamGradeActivity.class));
+    }
 
     public void studyQuestionList(){
         question_dialog_view = View.inflate(getApplication(), R.layout.study_dialog, null);
@@ -175,7 +203,8 @@ public class ExamActivity extends AppCompatActivity {
                     .setNeutralButton("交卷", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            savaGrade();
+                            finish();
                         }
                     })
                     .show();
@@ -281,7 +310,47 @@ public class ExamActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        resetExamData();
         super.onDestroy();
+    }
+
+    /**
+     * 初始化考试模式数据
+     */
+    public void resetExamData(){
+        //考试题库
+        Globel.examQuestionList=null;
+        //索引
+        Globel.examIndex=0;
+        //正确
+        Globel.examTrue=0;
+        //错误
+        Globel.examFalse=0;
+        //题量限制
+        Globel.exam_count_min=1;
+        Globel.exam_count_max=50;
+        //考试参数
+        Globel.examAttrsMap=null;
+        //题目状态（是否已提交答案）
+        Globel.isSubmitExamAnswer=null;
+        //试卷总分
+        Globel.exam_total_score=100;
+        //试卷总题量
+        Globel.exam_total_num=0;
+        //平均分值
+        Globel.exam_avg_score=0;
+        //开始日期
+        Globel.exam_start_date="01/01";
+        //开始时间
+        Globel.exam_start_time="00:00";
+        //结束日期
+        Globel.exam_end_date="01/01";
+        //结束时间
+        Globel.exam_end_time="00:00";
+        //考试成绩
+        Globel.exam_grade=0;
+        //正确率
+        Globel.exam_correct_procent=0;
     }
 
     public boolean isSingleAnswer(int index){

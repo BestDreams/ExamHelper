@@ -1,10 +1,13 @@
 package com.svse.dream.test;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 
@@ -38,6 +41,16 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
         List<String> allTableName = dataDao.getAllTableName();
         osListViewAdapter = new OSListViewAdapter(this, allTableName);
         OSlist.setAdapter(osListViewAdapter);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

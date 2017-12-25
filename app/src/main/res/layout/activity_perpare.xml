@@ -31,12 +31,13 @@
                     android:textSize="15sp"
                     android:text="最高得分"/>
                 <TextView
+                    android:id="@+id/perpare_maxgrade"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#FFF"
                     android:textSize="15sp"
-                    android:text="100"/>
+                    android:text="0"/>
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>

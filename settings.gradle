@@ -1,1 +1,1 @@
-include ':app', ':slidemenu'
+include ':app', ':slidemenu', ':autoupdatesdk-release'

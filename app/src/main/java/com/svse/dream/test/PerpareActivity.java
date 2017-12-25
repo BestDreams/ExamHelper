@@ -17,6 +17,7 @@ import com.svse.dream.apdater.PerpareAttrsAdapter;
 import com.svse.dream.bean.OSInfo;
 import com.svse.dream.utils.Globel;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ public class PerpareActivity extends AppCompatActivity {
     private ListView perpareAttrListview;
     private ListView perpareHistoryListview;
     private RelativeLayout perpareStart;
+    private TextView perpareMaxgrade;
 
     public void initView(){
         //初始化控件
@@ -45,6 +47,8 @@ public class PerpareActivity extends AppCompatActivity {
         perpareAttrTip = (TextView) findViewById(R.id.perpare_attr_tip);
         perpareHistoryTip = (TextView) findViewById(R.id.perpare_history_tip);
         perpareStart = (RelativeLayout) findViewById(R.id.perpare_start);
+        perpareMaxgrade = (TextView) findViewById(R.id.perpare_maxgrade);
+        perpareMaxgrade.setText(Globel.getSharedPreferences(this).getInt(Globel.EXAM_GRADE_MAX,0)+"");
 
         //初始化考试参数
         Globel.examAttrsMap=new HashMap<>();
@@ -76,6 +80,7 @@ public class PerpareActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             startActivity(new Intent(PerpareActivity.this,ExamActivity.class));
+                                            finish();
                                         }
                                     })
                                     .setNegativeButton("放弃",null)
@@ -116,10 +121,10 @@ public class PerpareActivity extends AppCompatActivity {
     }
 
     public void initExamData(View view){
-        String[] dateArray = Globel.dateFormatUtil("MM/dd HH:mm").split(" ");
+        String[] dateArray = Globel.dateFormatUtil("MM/dd HH:mm",new Date()).split(" ");
         Globel.exam_total_score=100;
         Globel.exam_total_num=total;
-        Globel.exam_avg_score=(float)Globel.exam_total_score/(float) Globel.exam_total_num;
+        Globel.exam_avg_score=Globel.doubleToDoubleBit(Globel.exam_total_score,Globel.exam_total_num,1);
         Globel.exam_start_date=dateArray[0];
         Globel.exam_start_time=dateArray[1];
 

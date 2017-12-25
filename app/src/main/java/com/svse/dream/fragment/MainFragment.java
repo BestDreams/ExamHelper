@@ -4,6 +4,7 @@ package com.svse.dream.fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class MainFragment extends Fragment {
     private LinearLayout errorBook;
     private LinearLayout mainFavorite;
     private Map<String,String> historyInfoMap;
-    private String coutinue_info_str;
+
     public void initView(View view){
         mainLibTip = (TextView) view.findViewById(R.id.main_lib_tip);
         mainMylib = (ListView) view.findViewById(R.id.main_mylib);
@@ -66,7 +67,20 @@ public class MainFragment extends Fragment {
         continueStudy.setOnClickListener(new MyOnClickListener());
         errorBook.setOnClickListener(new MyOnClickListener());
         mainFavorite.setOnClickListener(new MyOnClickListener());
+        setContinueName();
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        setContinueName();
+    }
+
+    /**
+     * 设置继续练习题库名称
+     */
+    private String coutinue_info_str;
+    public void setContinueName(){
         coutinue_info_str = Globel.getSharedPreferences(getActivity()).getString(Globel.MODEL_CONTINUE, "");
         if (coutinue_info_str.equals("")){
             mainCurrInfo.setText("无");

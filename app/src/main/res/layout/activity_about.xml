@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="作者：\n武汉工程职业技术学院\n手机1501班 张平\nQQ：2905225120"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="UI：\n我们的UI大大，李静童鞋(^o^)\nQQ:"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="Tips：\n时间比较仓促，基于原版本部分代码重构，修复大量BUG，主要功能和UI都已完成，其他UI界面和功能将在后续版本继续跟进，新版本上线将会提示更新。"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

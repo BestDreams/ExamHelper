@@ -3,7 +3,7 @@ package com.svse.dream.dao;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.svse.dream.bean.HistoryLog;
+import com.svse.dream.bean.Version;
 import com.svse.dream.bean.Question;
 import com.svse.dream.bean.QuestionMyLib;
 import com.svse.dream.test.MainActivity;
@@ -46,8 +46,8 @@ public class DataDaoImpl {
      * 获取更新记录
      * @return
      */
-    public List<HistoryLog> getUpdateLog(){
-        List<HistoryLog> list=new ArrayList<>();
+    public List<Version> getUpdateLog(){
+        List<Version> list=new ArrayList<>();
         Cursor cursor=db.rawQuery("select * from UpdateLog order by id  desc",null);
         if (cursor!=null){
             while (cursor.moveToNext()){
@@ -56,7 +56,7 @@ public class DataDaoImpl {
                 String date=cursor.getString(cursor.getColumnIndex("date"));
                 String content=cursor.getString(cursor.getColumnIndex("content"));
                 String bug=cursor.getString(cursor.getColumnIndex("bug"));
-                list.add(new HistoryLog(id,version,date,content,bug));
+                list.add(new Version(id,version,date,content,bug));
             }
         }
         return list;

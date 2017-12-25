@@ -52,6 +52,20 @@ public class DBHelper extends SQLiteOpenHelper{
                 "question_answer3 number not null,"+
                 "question_answer4 number not null"+
                 " )");
+        db.execSQL("create table my_grade(" +
+                "_id integer primary key autoincrement," +
+                "osNames text not null," +
+                "grade integer not null," +
+                "submitNo integer not null," +
+                "submitYes integer not null," +
+                "submitError integer not null," +
+                "submitCorrect integer not null," +
+                "startTime text not null," +
+                "endTime text not null," +
+                "totalTime text not null," +
+                "correctProcent text not null," +
+                "totalNum integer not null" +
+                " )");
     }
 
     @Override

@@ -7,8 +7,8 @@ android {
         applicationId "com.svse.dream.test"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 20171215
-        versionName "8.0.0"
+        versionCode 20171225
+        versionName "20171225"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -30,4 +30,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    compile project(':autoupdatesdk-release')
 }

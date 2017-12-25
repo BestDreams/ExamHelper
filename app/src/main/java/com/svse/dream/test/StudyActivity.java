@@ -202,7 +202,7 @@ public class StudyActivity extends AppCompatActivity {
         question_answer=new CheckBox[]{studyAnswerA,studyAnswerB,studyAnswerC,studyAnswerD};
 
         //绑定数据
-        studyQuestion.setText("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+question.getQuestion_content());
+        studyQuestion.setText("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+question.getQuestion_content());
         studyOsname.setText(question.getOsName());
         studyType.setText(question.getQuestion_answer2()==-1?"单选":"多选");
         studyAnswerA.setText(question.getQuestion_answerA());
