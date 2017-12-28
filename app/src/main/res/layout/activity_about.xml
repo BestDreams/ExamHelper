@@ -4,6 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:background="#F6927B"
+        android:text="关于我们"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#7F7F7F"
                 android:textSize="15sp"
-                android:text="UI：\n我们的UI大大，李静童鞋(^o^)\nQQ:"/>
+                android:text="UI：\n我们的UI大大，李静童鞋(^o^)\nQQ:736479138"/>
 
             <TextView
                 android:layout_marginTop="20dp"

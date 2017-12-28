@@ -9,6 +9,7 @@
         android:layout_height="150dp"
         android:background="@mipmap/slide_top">
         <TextView
+            android:id="@+id/currentVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
@@ -25,7 +26,8 @@
         android:background="@mipmap/slide_bottom">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="7"
             android:paddingLeft="45dp"
             android:orientation="vertical">
             <LinearLayout
@@ -134,14 +136,15 @@
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:src="@mipmap/slide_icon_line" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:paddingLeft="30dp"
             android:gravity="bottom"
             android:paddingBottom="15dp"
@@ -161,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="#7f7f7f"
-                    android:text="分享"/>
+                    android:text="Github/码云"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/slide_exit"

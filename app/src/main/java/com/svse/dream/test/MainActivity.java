@@ -18,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.autoupdatesdk.BDAutoUpdateSDK;
@@ -26,11 +27,14 @@ import com.google.gson.Gson;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.svse.dream.bean.MyGrade;
 import com.svse.dream.bean.Question;
+import com.svse.dream.dao.DataDaoImpl;
 import com.svse.dream.fragment.MainFragment;
 import com.svse.dream.utils.DBHelper;
 import com.svse.dream.utils.Globel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -47,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         updateVersion();
     }
 
+    /**
+     * 检查版本
+     */
     public void updateVersion(){
         BDAutoUpdateSDK.uiUpdateAction(MainActivity.this, new UICheckUpdateCallback() {
             @Override
@@ -61,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * 侧滑菜单
+     */
     public static SlidingMenu slidingMenu;
     private LinearLayout slideMylib;
     private LinearLayout slideUpdate;
@@ -70,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout slideAbout;
     private LinearLayout slideShare;
     private LinearLayout slideExit;
+    private TextView currentVersion;
+
     public void initSlideMenu(){
         Display display = getWindowManager().getDefaultDisplay();
         slidingMenu=new SlidingMenu(this);
@@ -89,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         slideAbout = (LinearLayout) findViewById(R.id.slide_about);
         slideShare = (LinearLayout) findViewById(R.id.slide_share);
         slideExit = (LinearLayout) findViewById(R.id.slide_exit);
+        currentVersion = (TextView) findViewById(R.id.currentVersion);
+        currentVersion.setText("Version_"+new DataDaoImpl().getVersion());
         slideMylib.setOnClickListener(this);
         slideUpdate.setOnClickListener(this);
         slideHelp.setOnClickListener(this);
@@ -171,9 +185,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbWriter.execSQL(sql);
     }
 
-    public static MyGrade getCurrentMyGrade(){
-        MyGrade myGrade=null;
-        String sql="select * from my_grade order by _id desc limit 0,1";
+    public static List<MyGrade> getMyGradeList(String sql){
+        List<MyGrade> list=new ArrayList<>();
         Cursor cursor = dbReader.rawQuery(sql, null);
         if (cursor!=null){
             while (cursor.moveToNext()){
@@ -189,11 +202,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String totalTime = cursor.getString(cursor.getColumnIndex("totalTime"));
                 String correctProcent = cursor.getString(cursor.getColumnIndex("correctProcent"));
                 Integer totalNum = cursor.getInt(cursor.getColumnIndex("totalNum"));
-                myGrade=new MyGrade(id,osNames,grade,submitNo,submitYes,submitError,submitCorrect,startTime,endTime,totalTime,correctProcent,totalNum);
+                list.add(new MyGrade(id,osNames,grade,submitNo,submitYes,submitError,submitCorrect,startTime,endTime,totalTime,correctProcent,totalNum));
             }
         }
-        return myGrade;
+        return list;
     }
+
 
     public static void removeQuestionFromMylib(Integer id){
             String sql="delete from my_lib where _id="+id;
@@ -249,10 +263,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 updateVersion();
                 break;
             case R.id.slide_help:
-                Toast.makeText(this,"使用帮助",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,HelpActivity.class));
                 break;
             case R.id.slide_version:
-                Toast.makeText(this,"版本记录",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,VersionActivity.class));
                 break;
             case R.id.slide_setting:
                 Toast.makeText(this,"系统设置",Toast.LENGTH_SHORT).show();
@@ -261,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this,AboutActivity.class));
                 break;
             case R.id.slide_share:
-                Toast.makeText(this,"分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Github/码云",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.slide_exit:
                 finish();

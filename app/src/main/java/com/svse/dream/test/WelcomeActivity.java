@@ -24,9 +24,10 @@ public class WelcomeActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initData();
     }
-    boolean isFirstIn;
+    boolean isFirstIn,isFirstHelp;
     public void initData(){
         isFirstIn = Globel.getSharedPreferences(this).getBoolean("isFirstIn", false);
+        isFirstHelp = Globel.getSharedPreferences(this).getBoolean("isFirstHelp", false);
         //如果是第一次进入，则加载数据库
         if (!isFirstIn){
             loadDB();
@@ -39,7 +40,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 if (!isFirstIn){
                     startActivity(new Intent(WelcomeActivity.this,LibImprotActivity.class));
                 }else{
-                    startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+                    if (!isFirstHelp){
+                        startActivity(new Intent(WelcomeActivity.this,HelpActivity.class));
+                    }else{
+                        startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+                    }
                 }
                 finish();
             }

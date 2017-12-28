@@ -24,7 +24,7 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
     private ListView OSlist;
     private DataDaoImpl dataDao;
     private OSListViewAdapter osListViewAdapter;
-
+    private boolean isFirstHelp=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void init() {
+        isFirstHelp = Globel.getSharedPreferences(this).getBoolean("isFirstHelp", false);
         dataDao=new DataDaoImpl();
         editor= Globel.getSharedPreferencesEditor(this);
         OSlist = (ListView) findViewById(R.id.OSlist);
@@ -47,7 +48,11 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
+            if (!isFirstHelp){
+                startActivity(new Intent(LibImprotActivity.this,HelpActivity.class));
+            }else {
+                startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
+            }
             finish();
         }
         return super.onKeyDown(keyCode, event);
@@ -61,7 +66,11 @@ public class LibImprotActivity extends AppCompatActivity implements View.OnClick
                 editor.putBoolean("isFirstIn",true);
                 editor.putStringSet("myOSlist",myOSlist);
                 editor.commit();
-                startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
+                if (!isFirstHelp){
+                    startActivity(new Intent(LibImprotActivity.this,HelpActivity.class));
+                }else{
+                    startActivity(new Intent(LibImprotActivity.this,MainActivity.class));
+                }
                 finish();
                 break;
         }

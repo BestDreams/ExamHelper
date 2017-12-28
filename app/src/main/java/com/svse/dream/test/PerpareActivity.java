@@ -13,7 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.svse.dream.apdater.HistoryAdapter;
 import com.svse.dream.apdater.PerpareAttrsAdapter;
+import com.svse.dream.bean.MyGrade;
 import com.svse.dream.bean.OSInfo;
 import com.svse.dream.utils.Globel;
 
@@ -60,6 +62,17 @@ public class PerpareActivity extends AppCompatActivity {
             perpareAttrListview.setVisibility(View.VISIBLE);
             perpareAttrTip.setVisibility(View.GONE);
             perpareAttrListview.setAdapter(new PerpareAttrsAdapter(this,osInfoList));
+        }
+
+        //初始化历史成绩数据
+        List<MyGrade> myGradeList = MainActivity.getMyGradeList(Globel.SQL_GET_GRADE_LIST);
+        if (myGradeList==null||myGradeList.size()==0){
+            perpareHistoryTip.setVisibility(View.VISIBLE);
+            perpareHistoryListview.setVisibility(View.GONE);
+        }else{
+            perpareHistoryTip.setVisibility(View.GONE);
+            perpareHistoryListview.setVisibility(View.VISIBLE);
+            perpareHistoryListview.setAdapter(new HistoryAdapter(this,myGradeList));
         }
 
         //开始考试

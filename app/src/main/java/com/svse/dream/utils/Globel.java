@@ -52,6 +52,8 @@ public class Globel {
     public static final String LOADING_LIB_EXAM="正在生成考试试卷...";
     public static final String EXAM_GRADE_MAX="EXAM_GRADE_MAX";
 
+    public static final String SQL_GET_CURRENT_GRADE="select * from my_grade order by _id desc limit 0,1";
+    public static final String SQL_GET_GRADE_LIST="select * from my_grade order by _id desc limit 0,5";
 
     /**
      * 练习模式变量
