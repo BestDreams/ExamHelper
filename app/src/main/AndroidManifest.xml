@@ -32,8 +32,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StudyActivity"
             android:screenOrientation="portrait" />
@@ -48,16 +48,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ExamActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ExamGradeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AboutActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HelpActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".VersionActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VersionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".OpenSourceActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="BDAPPID"
@@ -75,6 +80,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/bdp_update_filepaths" />
         </provider>
+
     </application>
 
 </manifest>

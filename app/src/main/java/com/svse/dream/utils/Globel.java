@@ -55,6 +55,10 @@ public class Globel {
     public static final String SQL_GET_CURRENT_GRADE="select * from my_grade order by _id desc limit 0,1";
     public static final String SQL_GET_GRADE_LIST="select * from my_grade order by _id desc limit 0,5";
 
+    public static final String URL_OPEN_SOURCE_MAYUN="https://gitee.com/HelloDream2017/ExamHelper.git";
+    public static final String URL_OPEN_SOURCE_GITHUB="https://github.com/BestDreams/ExamHelper.git";
+
+
     public static boolean HELP_STATE=false;
 
     /**

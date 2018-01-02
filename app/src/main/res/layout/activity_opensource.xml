@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:background="#F6927B"
+        android:text="开放源代码"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="说明：\n经过一番考虑，本人决定开放源代码，供大家交流学习修改定制发布自己的版本。同时请尊重本人的劳动成果，修改发布请注明出处。"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="码云地址："/>
+
+            <Button
+                android:id="@+id/code_mayun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="码云项目地址"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F7F7F"
+                android:textSize="15sp"
+                android:text="Github地址："/>
+
+            <Button
+                android:id="@+id/code_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Github项目地址"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this,AboutActivity.class));
                 break;
             case R.id.slide_share:
-                Toast.makeText(this,"Github/码云",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,OpenSourceActivity.class));
                 break;
             case R.id.slide_exit:
                 finish();
