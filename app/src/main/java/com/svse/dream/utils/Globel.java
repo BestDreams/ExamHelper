@@ -55,6 +55,8 @@ public class Globel {
     public static final String SQL_GET_CURRENT_GRADE="select * from my_grade order by _id desc limit 0,1";
     public static final String SQL_GET_GRADE_LIST="select * from my_grade order by _id desc limit 0,5";
 
+    public static boolean HELP_STATE=false;
+
     /**
      * 练习模式变量
      */
@@ -135,6 +137,13 @@ public class Globel {
     public static int favoriteTrue=0;
     //错误
     public static int favoriteFalse=0;
+
+    /**
+     * 是否主动检查更新
+     * @param context
+     * @return
+     */
+    public static boolean isCheckUpdate=false;
 
 
     //获取sharedPreferences对象

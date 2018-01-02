@@ -236,8 +236,25 @@ public class FavoriteActivity extends AppCompatActivity {
         studyAnswerC.setText(question.getQuestion_answerC());
         studyAnswerD.setText(question.getQuestion_answerD());
         studyAnswerResult.setText(question.getQuestion_explain());
-
+        studyAnswer.setVisibility(View.VISIBLE);
+        if (isSingleAnswer(index)){
+            question_answer[question.getQuestion_answer1()].setButtonDrawable(R.mipmap.study_result_true);
+        }else{
+            question_answer[question.getQuestion_answer1()].setButtonDrawable(R.mipmap.study_result_true);
+            question_answer[question.getQuestion_answer2()].setButtonDrawable(R.mipmap.study_result_true);
+            if (question.getQuestion_answer3()!=-1){
+                question_answer[question.getQuestion_answer3()].setButtonDrawable(R.mipmap.study_result_true);
+            }
+            if (question.getQuestion_answer4()!=-1){
+                question_answer[question.getQuestion_answer4()].setButtonDrawable(R.mipmap.study_result_true);
+            }
+        }
+        Globel.setCheckEnableFalse(question_answer);
         viewList.add(view);
+    }
+
+    public boolean isSingleAnswer(int index){
+        return Globel.FavoriteList.get(index).getQuestion_answer2()==-1?true:false;
     }
 
     public void setStudyCountTrue(){

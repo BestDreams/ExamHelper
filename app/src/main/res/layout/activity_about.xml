@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#7F7F7F"
                 android:textSize="15sp"
-                android:text="Tips：\n时间比较仓促，基于原版本部分代码重构，修复大量BUG，主要功能和UI都已完成，其他UI界面和功能将在后续版本继续跟进，新版本上线将会提示更新。"/>
+                android:text="Tips：\n一起交流学习，有好的想法或建议以及BUG反馈，都可以联系我呦~~"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

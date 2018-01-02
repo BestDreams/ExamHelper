@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,12 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BDAutoUpdateSDK.uiUpdateAction(MainActivity.this, new UICheckUpdateCallback() {
             @Override
             public void onNoUpdateFound() {
-                Toast.makeText(MainActivity.this, "未找到更新版本", Toast.LENGTH_SHORT).show();
+                if (Globel.isCheckUpdate){
+                    Toast.makeText(MainActivity.this, "未找到更新版本", Toast.LENGTH_SHORT).show();
+                }
+                Globel.isCheckUpdate=false;
             }
 
             @Override
             public void onCheckComplete() {
-
+                Globel.isCheckUpdate=false;
             }
         });
     }
@@ -76,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout slideUpdate;
     private LinearLayout slideHelp;
     private LinearLayout slideVersion;
-    private LinearLayout slideSetting;
     private LinearLayout slideAbout;
     private LinearLayout slideShare;
     private LinearLayout slideExit;
@@ -97,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         slideUpdate = (LinearLayout) findViewById(R.id.slide_update);
         slideHelp = (LinearLayout) findViewById(R.id.slide_help);
         slideVersion = (LinearLayout) findViewById(R.id.slide_version);
-        slideSetting = (LinearLayout) findViewById(R.id.slide_setting);
         slideAbout = (LinearLayout) findViewById(R.id.slide_about);
         slideShare = (LinearLayout) findViewById(R.id.slide_share);
         slideExit = (LinearLayout) findViewById(R.id.slide_exit);
@@ -107,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         slideUpdate.setOnClickListener(this);
         slideHelp.setOnClickListener(this);
         slideVersion.setOnClickListener(this);
-        slideSetting.setOnClickListener(this);
         slideAbout.setOnClickListener(this);
         slideShare.setOnClickListener(this);
         slideExit.setOnClickListener(this);
@@ -260,16 +261,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.slide_update:
+                Globel.isCheckUpdate=true;
                 updateVersion();
                 break;
             case R.id.slide_help:
+                Globel.HELP_STATE=true;
                 startActivity(new Intent(this,HelpActivity.class));
                 break;
             case R.id.slide_version:
                 startActivity(new Intent(this,VersionActivity.class));
-                break;
-            case R.id.slide_setting:
-                Toast.makeText(this,"系统设置",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.slide_about:
                 startActivity(new Intent(this,AboutActivity.class));
@@ -285,4 +285,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 }

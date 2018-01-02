@@ -46,7 +46,7 @@
         android:id="@+id/perpare_attr"
         android:layout_below="@id/perpare_top"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="240dp"
         android:background="@mipmap/perpare_attrs_bg"
         android:layout_marginTop="-50dp"
         android:layout_marginLeft="20dp"
@@ -73,7 +73,7 @@
     <RelativeLayout
         android:layout_below="@id/perpare_attr"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="150dp"
         android:background="@mipmap/perpare_history_bg"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"

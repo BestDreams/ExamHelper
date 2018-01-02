@@ -22,16 +22,14 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //加载数据库
+        loadingDB();
         initData();
     }
     boolean isFirstIn,isFirstHelp;
     public void initData(){
         isFirstIn = Globel.getSharedPreferences(this).getBoolean("isFirstIn", false);
         isFirstHelp = Globel.getSharedPreferences(this).getBoolean("isFirstHelp", false);
-        //如果是第一次进入，则加载数据库
-        if (!isFirstIn){
-            loadDB();
-        }
         //如果是第一次则跳转到题库选择界面，否则跳转到主界面
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
@@ -54,7 +52,7 @@ public class WelcomeActivity extends AppCompatActivity {
     /**
      * 加载数据库文件到指定目录
      */
-    public void loadDB(){
+    public void loadingDB(){
         File folder=new File(Globel.DB_PATH);
         if (!folder.exists()){
             folder.mkdir();

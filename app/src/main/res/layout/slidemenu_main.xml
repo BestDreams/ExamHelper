@@ -101,23 +101,6 @@
                     android:text="版本记录"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/slide_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/slide_icon_setting"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="#7f7f7f"
-                    android:text="系统设置"/>
-            </LinearLayout>
-            <LinearLayout
                 android:id="@+id/slide_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

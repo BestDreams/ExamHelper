@@ -21,7 +21,9 @@ public class MyGrade {
     public MyGrade() {
     }
 
-    public MyGrade(Integer id, String osNames, Integer grade, Integer submitNo, Integer submitYes, Integer submitError, Integer submitCorrect, String startTime, String endTime, String totalTime, String correctProcent, Integer totalNum) {
+    public MyGrade(Integer id, String osNames, Integer grade, Integer submitNo, Integer submitYes,
+                   Integer submitError, Integer submitCorrect, String startTime, String endTime,
+                   String totalTime, String correctProcent, Integer totalNum) {
         this.id = id;
         this.osNames = osNames;
         this.grade = grade;

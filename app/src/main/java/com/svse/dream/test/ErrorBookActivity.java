@@ -249,6 +249,7 @@ public class ErrorBookActivity extends AppCompatActivity {
                         if (Globel.isTrueAnswerByQuestion(question,question_answer)){
                             Globel.errorBookTrue++;
                             setStudyCountTrue();
+                            correctIndexList.add(question.getId());
                             viewPager.setCurrentItem(index+1);
                         }else {
                             Globel.errorBookFalse++;
@@ -258,13 +259,13 @@ public class ErrorBookActivity extends AppCompatActivity {
                                     question_answer[i].setButtonDrawable(R.mipmap.study_result_false);
                                 };
                             }
-                            question_answer[Globel.studyQuestionList.get(index).getQuestion_answer1()].setButtonDrawable(R.mipmap.study_result_true);
-                            question_answer[Globel.studyQuestionList.get(index).getQuestion_answer2()].setButtonDrawable(R.mipmap.study_result_true);
-                            if (Globel.studyQuestionList.get(index).getQuestion_answer3()!=-1){
-                                question_answer[Globel.studyQuestionList.get(index).getQuestion_answer3()].setButtonDrawable(R.mipmap.study_result_true);
+                            question_answer[Globel.ErrorBookList.get(index).getQuestion_answer1()].setButtonDrawable(R.mipmap.study_result_true);
+                            question_answer[Globel.ErrorBookList.get(index).getQuestion_answer2()].setButtonDrawable(R.mipmap.study_result_true);
+                            if (Globel.ErrorBookList.get(index).getQuestion_answer3()!=-1){
+                                question_answer[Globel.ErrorBookList.get(index).getQuestion_answer3()].setButtonDrawable(R.mipmap.study_result_true);
                             }
-                            if (Globel.studyQuestionList.get(index).getQuestion_answer4()!=-1){
-                                question_answer[Globel.studyQuestionList.get(index).getQuestion_answer4()].setButtonDrawable(R.mipmap.study_result_true);
+                            if (Globel.ErrorBookList.get(index).getQuestion_answer4()!=-1){
+                                question_answer[Globel.ErrorBookList.get(index).getQuestion_answer4()].setButtonDrawable(R.mipmap.study_result_true);
                             }
                         }
                         Globel.setCheckEnableFalse(question_answer);

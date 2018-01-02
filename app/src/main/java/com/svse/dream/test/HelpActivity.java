@@ -23,8 +23,10 @@ public class HelpActivity extends AppCompatActivity {
         help_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Globel.getSharedPreferencesEditor(HelpActivity.this).putBoolean("isFirstHelp",true).commit();
-                startActivity(new Intent(HelpActivity.this,MainActivity.class));
+                if (!Globel.HELP_STATE){
+                    Globel.getSharedPreferencesEditor(HelpActivity.this).putBoolean("isFirstHelp",true).commit();
+                    startActivity(new Intent(HelpActivity.this,MainActivity.class));
+                }
                 finish();
             }
         });

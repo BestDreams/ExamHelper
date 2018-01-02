@@ -7,8 +7,8 @@ android {
         applicationId "com.svse.dream.test"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 20171228
-        versionName "20171228"
+        versionCode 20180102
+        versionName "20180102"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
